@@ -1,0 +1,10 @@
+label.error {
+    margin-top: 1.6em;
+    color: red;
+}
+input.error {border-bottom: red;}
+nav{ background-color: #2e3951 !important; }
+
+/* Background de login */
+.background-login { background-image: url('/img/1228.jpg'); background-repeat: no-repeat; background-size: cover; }
+/*End Background de login*/

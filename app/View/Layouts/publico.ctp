@@ -147,7 +147,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
          </footer>
          <!--/.Footer-->
-          
+    <?php } ?>      
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <?php echo $this->Html->script('../MDB-Free_4.5.13/js/jquery-3.3.1.min'); ?>
@@ -158,7 +158,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <?php echo $this->Html->script('publico/jquery.validate'); ?>
     <?php echo $this->Html->script('/js/publico/funciones');   ?>
     <!-- script por seccion -->
-    <?php echo $this->Html->script('/js/publico/'.$this->params['controller']); ?>
+    <?php # echo $this->Html->script('/js/publico/'.$this->params['controller']); ?>
     
     
     
@@ -168,8 +168,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <script type="text/javascript">
       // Animations initialization
       new WOW().init();
+      
     </script>
          
-    <?php } ?>
+    
     </body>
 </html>

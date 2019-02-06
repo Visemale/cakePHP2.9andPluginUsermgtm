@@ -126,7 +126,7 @@
                                         <a href="#" class="waves-effect">Nuevo Rol</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="waves-effect">Permisos del sistema</a>
+                                        <a href="<?php echo $this->webroot; ?>permissions" class="waves-effect">Permisos del sistema</a>
                                     </li>
                                 </ul>
                             </div>
@@ -198,7 +198,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Mi Cuenta</a>
-                        <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                        <a class="dropdown-item" href="<?php echo $this->webroot; ?>logout">Cerrar Sesion</a>
                     </div>
                 </li>
             </ul>
@@ -225,27 +225,27 @@
         </button>-->
 
         <!--Modal: modalConfirmDelete-->
-        <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--        <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-            <!--Content-->
+            Content
             <div class="modal-content text-center">
-              <!--Header-->
+              Header
               <div class="modal-header d-flex justify-content-center">
                   <p class="heading">&iquest;Deseas cambiar el status&quest;</p>
               </div>
-              <!--Body-->
+              Body
               <div class="modal-body">
                 <i class="fas fa-exclamation fa-4x animated rotateIn"></i>
               </div>
-              <!--Footer-->
+              Footer
               <div class="modal-footer flex-center">
                 <a class="btn  btn-outline-danger">Si</a>
                 <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
               </div>
             </div>
-            <!--/.Content-->
+            /.Content
           </div>
-        </div>
+        </div>-->
         <!--End Modal Confirmation-->
         
     </main>
@@ -254,8 +254,8 @@
     <!--Footer-->
     <footer class="page-footer text-center text-md-left pt-4">
         
-        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-            <!--Content-->
+<!--        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            Content
             <div class="modal-content text-center">
               Header
               <div class="modal-header d-flex justify-content-center">
@@ -271,8 +271,8 @@
                 <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
               </div>
             </div>
-            <!--/.Content-->
-          </div>
+            /.Content
+          </div>-->
         
         <?php echo $this->Session->flash(); ?>
 

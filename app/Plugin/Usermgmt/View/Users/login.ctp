@@ -57,7 +57,7 @@
                   </div>
 
                   <div class="text-center">
-                    <button class="btn btn-indigo">Ingresar</button>
+                      <input type="submit" class="btn btn-indigo" value="Ingresar" />
                   </div>
 
                 </form>

@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 26, 2018, 3:51:44 PM
+    Author     : leslye.perez
+*/
+
+label.error {
+    margin-top: 1.6em;
+    color: red;
+}
+input.error, textarea.error {border-bottom: red;}
+
+.flash-content{position: fixed; right: 1%; top: 10%; position: absolute;}
+.clearfix { margin-bottom: 1%; margin-top: 1%; min-height: 20px;}
+table.table td.description { text-align: justify !important; }
+.btn-outline-black{ margin-top: -10%; }
+.content-btn-form > button{ margin-top: 0px !important; }
+.btn-sm-table { margin-top: -3px; }
+
+/*Breadcrums*/
+.breadcrumb { text-align: left !important; } 
+.breadcrumb > li, .breadcrumb > li > a { color: #fff !important; text-decoration: none; }
+.breadcrumb > li { font-size: 16px;}
+.breadcrumb > .active { cursor: no-drop !important; }
+/*end Breadcrums*/
+
+.password-icon {
+	position: absolute;
+    right: 0;
+    top: 0;
+}
+
+input{ border: 1px solid #ced4da !important;}
+
+.file-field.big .file-path-wrapper {
+height: 3.2rem; }
+.file-field.big .file-path-wrapper .file-path {
+height: 3rem; }
+
+input.file-path { border: none !important; border-bottom: 1px solid #ced4da !important; background: none !important}  

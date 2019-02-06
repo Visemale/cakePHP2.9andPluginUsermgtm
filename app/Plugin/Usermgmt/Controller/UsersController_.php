@@ -110,69 +110,76 @@ class UsersController extends UserMgmtAppController {
 	 */
 	public function login() {
         $this->layout = 'publico';
-            if ($this->request -> isPost()) {
-                $this->User->set($this->data);
-                #if($this->User->LoginValidate()) {
-                    $email  = $this->data['User']['email'];
-                    $password = $this->data['User']['password'];
+		  if ($this->request -> isPost()) {
+			$this->User->set($this->data);
+			if($this->User->LoginValidate()) {
+				$email  = $this->data['User']['email'];
+				$password = $this->data['User']['password'];
 
-                    $user = $this->User->findByUsername($email);
-                    if (empty($user)) {
-                        $user = $this->User->findByEmail($email);
-                        if (empty($user)) {
-                            $this->Session->setFlash(__('Correo/Nombre de Usuario o Contraseña Incorrecto'));
-                            return;
-                        }
-                    }
-                    // check for inactive account
-                    if ($user['User']['id'] != 1 and $user['User']['active']==0) {
-                        $this->Session->setFlash(__('Su registro no ha sido confirmado por favor, compruebe su correo electrónico o póngase en contacto con el Administrador'));
-                        return;
-                    }
-                    $hashed = md5($password);
-                    // echo $hashed."<br>";
-                     //echo "usuario".$user['User']['password'];
-                     //die();
-                    if ($user['User']['password'] === $hashed) {
-                        $this->UserAuth->login($user);
-                        $remember = (!empty($this->data['User']['remember']));
-                        if ($remember) {
-                            $this->UserAuth->persist('2 weeks');
-                        }
-                        $OriginAfterLogin=$this->Session->read('Usermgmt.OriginAfterLogin');
-                        $this->Session->delete('Usermgmt.OriginAfterLogin');
-                        #$redirect = (!empty($OriginAfterLogin)) ? $OriginAfterLogin : loginRedirectUrl;
+				$user = $this->User->findByUsername($email);
+				if (empty($user)) {
+					$user = $this->User->findByEmail($email);
+					if (empty($user)) {
+						$this->Session->setFlash(__('Correo/Nombre de Usuario o Contraseña Incorrecto'));
+						return;
+					}
+				}
+				// check for inactive account
+				if ($user['User']['id'] != 1 and $user['User']['active']==0) {
+					$this->Session->setFlash(__('Su registro no ha sido confirmado por favor, compruebe su correo electrónico o póngase en contacto con el Administrador'));
+					return;
+				}
+				$hashed = md5($password);
+               // echo $hashed."<br>";
+                //echo "usuario".$user['User']['password'];
+                //die();
+				if ($user['User']['password'] === $hashed) {
+					$this->UserAuth->login($user);
+					$remember = (!empty($this->data['User']['remember']));
+					if ($remember) {
+						$this->UserAuth->persist('2 weeks');
+					}
+					$OriginAfterLogin=$this->Session->read('Usermgmt.OriginAfterLogin');
+					$this->Session->delete('Usermgmt.OriginAfterLogin');
+					#$redirect = (!empty($OriginAfterLogin)) ? $OriginAfterLogin : loginRedirectUrl;
                     
-                        
+
                     
-                        switch($this->UserAuth->getGroupId()){
-                            //Admin
-                            case '1': 
-                                $redirect = '/user_dashboard'; 
-                                break;
-                            case '4': 
-                                $redirect = '/juego/board'; 
-                                break;
-                            case '5': 
-                                $redirect = '/promotor/board'; 
-                                break;
-                            case '7': 
-                                $redirect = '/user_dashboard'; 
-                                break;
-                            default: 
-                                $redirect = '/login'; 
-                        }
-                        $this->redirect($redirect);
-                    } else {
-                        $this->Session->setFlash(__('Correo/Nombre de Usuario o Contraseña Incorrecto'));
-                        return;
-                    }
-                #}
-            }
-            if($this->request->is('get')){
-                $data = $this->request->query;
-                $this->set(compact('data'));
-            }
+                    switch($this->UserAuth->getGroupId())
+                    {
+						//Admin
+						case '1': 
+                            $redirect = '/user_dashboard'; 
+                        break;
+                        //Participantes
+					    case '4': 
+                            $redirect = '/juego/board'; 
+                        break;
+                        //Promotores
+                        case '5': 
+                            $redirect = '/juego/board'; 
+                        break;
+                        //admin maruchan
+                        case '7': 
+                            $redirect = '/user_dashboard'; 
+                        break;
+                        default: 
+                            $redirect = '/login'; 
+                        break;
+					}	
+					$this->redirect($redirect);
+				} else {
+					$this->Session->setFlash(__('Correo/Nombre de Usuario o Contraseña Incorrecto'));
+					return;
+				}
+			}
+		}
+                if($this->request->is('get')){
+                
+                    $data = $this->request->query;
+
+                    $this->set(compact('data'));
+                }
 	}
 	/**
 	 * Used to logged out from the site

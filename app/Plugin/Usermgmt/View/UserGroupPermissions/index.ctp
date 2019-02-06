@@ -21,14 +21,13 @@ echo $this->Html->script('/usermgmt/js/umupdate');
 ?>
 <div class="umtop">
 	<?php echo $this->Session->flash(); ?>
-	<?php echo $this->element('dashboard'); ?>
+	<?php #echo $this->element('dashboard'); ?>
 	<div class="um_box_up"></div>
 	<div class="um_box_mid">
 		<div class="um_box_mid_content">
 			<div class="um_box_mid_content_top">
-				<div class="umstyle1"  align="left" style="float:left"><?php echo __('User Group Permissions');?></div>
 				<div style="float:right">
-					<span  class="umstyle2"><?php __('Select Controller');?></span>  <?php echo $this->Form->input("controller",array('type'=>'select','div'=>false,'options'=>$allControllers,'selected'=>$c,'label'=>false,"onchange"=>"window.location='".SITE_URL."permissions/?c='+(this).value"))?>
+					<span  class="umstyle2"><?php __('Select Controller');?></span>  <?php echo $this->Form->input("controller",array('class'=>'browser-default custom-select required','type'=>'select','div'=>false,'options'=>$allControllers,'selected'=>$c,'label'=>false,"onchange"=>"window.location='".SITE_URL."permissions/?c='+(this).value"))?>
 				</div>
 				<div style="clear:both"></div>
 			</div>
@@ -66,11 +65,11 @@ echo $this->Html->script('/usermgmt/js/umupdate');
 										} else {
 											$checked=false;
 										}
-										echo $this->Form->input($ugname,array('id'=>$ugname.$k,'type'=>'checkbox','checked'=>$checked));
+										echo $this->Form->input($ugname,array('id'=>$ugname.$k,'type'=>'checkbox','checked'=>$checked, 'class' => 'form-check-input'));
 									}
 									echo "</td>";
 									echo "<td>";
-									echo $this->Form->button('Update', array('type'=>'button','id'=>'mybutton123','name'=>$k,'onClick'=>'javascript:update_fields('.$k.');', 'class'=>'umbtn'));
+									echo $this->Form->button('Update', array('type'=>'button','id'=>'mybutton123','name'=>$k,'onClick'=>'javascript:update_fields('.$k.');', 'class'=>'btn btn-lg btn-primary btn-block'));
 									echo "<div id='updateDiv".$k."' align='right'>&nbsp;</div>";
 									echo "</td>";
 									echo "</tr>";

@@ -27,10 +27,38 @@ class UserGroupsController extends UserMgmtAppController {
 	 * @return array
 	 */
 	public function index() {
+                $this->set('title_for_layout', '<i class="fa fa-users"></i> Todos los Grupos');
 		$this->UserGroup->unbindModel( array('hasMany' => array('UserGroupPermission')));
 		$userGroups=$this->UserGroup->find('all', array('order'=>'UserGroup.id'));
 		$this->set('userGroups', $userGroups);
 	}
+        
+        public function buscarGroup(){
+		$this->view = 'index';
+		if($this->request->is('post')){
+			$data = $this->request->data['buscarGroup'];
+
+			if(empty($data) || $data == ''){
+				$this->redirect('/allGroups');
+			}else{
+				$this->UserGroup->unbindModel( array('hasMany' => array('LoginToken')));
+
+				$userGroups = $this->UserGroup->find('all',array(
+					'conditions'	=> array(
+						'OR' => array(
+							'UserGroup.name LIKE ' => '%'.$data.'%',
+							'UserGroup.alias_name LIKE ' => '%'.$data.'%'
+						)
+					),
+					'order'	=> 'UserGroup.id DESC'
+				));
+
+				$this->set(compact('userGroups','data'));
+			}
+		}
+	}
+        
+        
 	/**
 	 * Used to add group on the site by Admin
 	 *
@@ -38,11 +66,12 @@ class UserGroupsController extends UserMgmtAppController {
 	 * @return void
 	 */
 	public function addGroup() {
+                $this->set('title_for_layout', '<i class="fa fa-plus"></i> Agregar Grupo');
 		if ($this->request -> isPost()) {
 			$this->UserGroup->set($this->data);
 			if ($this->UserGroup->addValidate()) {
 				$this->UserGroup->save($this->request->data,false);
-				$this->Session->setFlash(__('The group is successfully added'));
+				$this->Session->setFlash(__('El grupo fue creado correctamente.'));
 				$this->redirect('/addGroup');
 			}
 		}
@@ -55,12 +84,13 @@ class UserGroupsController extends UserMgmtAppController {
 	 * @return void
 	 */
 	public function editGroup($groupId=null) {
+                $this->set('title_for_layout', '<i class="fa fa-edit"></i> Editar Grupo');
 		if (!empty($groupId)) {
 			if ($this->request -> isPut()) {
 				$this->UserGroup->set($this->data);
 				if ($this->UserGroup->addValidate()) {
 					$this->UserGroup->save($this->request->data,false);
-					$this->Session->setFlash(__('The group is successfully updated'));
+					$this->Session->setFlash(__('El grupo fue actualizado con éxito'));
 					$this->redirect('/allGroups');
 				}
 			} else {
@@ -81,7 +111,7 @@ class UserGroupsController extends UserMgmtAppController {
 		if (!empty($groupId)) {
 			if ($this->request -> isPost()) {
 				if ($this->UserGroup->delete($groupId, false)) {
-					$this->Session->setFlash(__('Group is successfully deleted'));
+					$this->Session->setFlash(__('El grupo fue eliminado con éxito'));
 				}
 			}
 			$this->redirect('/allGroups');
