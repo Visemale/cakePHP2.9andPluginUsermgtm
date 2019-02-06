@@ -64,45 +64,6 @@
                     <ul class="collapsible collapsible-accordion">
                         <li>
                             <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fas fa-layer-group"></i> Categorias<i class="fas fa-angle-down rotate-icon"></i>
-                            </a>
-                            <div class="collapsible-body">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>categorias" class="waves-effect">Todas las Categorias</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>categorias/nueva_categoria" class="waves-effect">Nueva Categoria</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>categorias/subcategorias" class="waves-effect">Todas las Subcategorias</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>categorias/nueva_subcategoria" class="waves-effect">Nueva Subcategoria</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fab fa-readme"></i> Blog<i class="fas fa-angle-down rotate-icon"></i>
-                            </a>
-                            <div class="collapsible-body">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>blog/articulos" class="waves-effect">Todas los Articulos</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>blog/nuevo_articulo" class="waves-effect">Nuevo Articulo</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->webroot; ?>blog/galeria_multimedia" class="waves-effect">Galeria Multimedia</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect arrow-r">
                                 <i class="fas fa-users"></i> Usuarios<i class="fas fa-angle-down rotate-icon"></i>
                             </a>
                             <div class="collapsible-body">
