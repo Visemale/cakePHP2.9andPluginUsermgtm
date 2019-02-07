@@ -112,6 +112,11 @@
                                 <i class="far fa-envelope"></i> Mensajes y comentarios
                             </a>                            
                         </li>
+                        <li>
+                            <a href="<?php echo $this->webroot; ?>Custom_sip/alta" class="collapsible-header waves-effect arrow-r">
+                                <i class="fas fa-plus-circle"></i> Alta custom sip
+                            </a>                            
+                        </li>
                     </ul>
                 </li>
                 <!--/. Side navigation links -->
